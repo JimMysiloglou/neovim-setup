@@ -1,5 +1,18 @@
 local keymap = vim.keymap.set
 
+local ok, wk = pcall(require, "which-key")
+if ok then
+  wk.register({
+    r = {
+      name = "repl",
+      r = "Start REPL",
+      s = "Send selection",
+      f = "Send file",
+      l = "Send line",
+      q = "Quit REPL",
+    },
+  }, { prefix = "<leader>" })
+end
 
 keymap("n", "<leader>w", "<cmd>w<CR>", { desc = "Save file" })
 keymap("n", "<leader>q", "<cmd>q<CR>", { desc = "Quit" })
